@@ -1,7 +1,13 @@
-# Set Ruby as the language so it doesn't download the pip things. Instead, let docker do that.
 language: ruby
 cache: bundler
 script:
-  - docker-compose -f travis-docker-compose.yml run web tox
+- docker-compose -f travis-docker-compose.yml run web tox
 services:
-  - docker
+- docker
+deploy:
+  provider: heroku
+  api_key:
+    secure: YUs1plSJF/jeWfGy6aKnVO409lefzGpnt0HNZVUeCVDnpRuJv3J2UsUDy586lbDZOzCDa6GiTy+TveOziPbxS46UXCtunu7jqztVl21d7B8RT3qn7dsgFMe4qxmRa8foQmGBPdpxe765OBlj8FzbaqtXDwJIVryD9ogU9cqrLbc9/RNvNM9BwylUEI/vPAO0Wjvr1R4/sC1UgM3kGbB5HS46cbdMJ9QHYz8xKtSERjwhm9IYXu//kFPEboigV/XnnVpBi81nlQJEJm0w4ReB5ZGGkEhQJPQkS80lT1y8XRWaTvdssOUqXO8hxePPLyc5ZAjWT49Ax5BFKRt2zBCl1JzpR9NXK8Dp3YqIxihGG4Sq5Yl8p22PaMcjTAEr0LNshoQyOreH0sBB6ZUTmFPGrOTkjWeFdqi+tVGSwWNIVVRkIs4suE3/zG3LWO5mmBy39mtJPM9OXdhOVwPxaiEC6vMKaU79b1AbRz3KnNvfKcIRjezYNc8gTSZHozj2YaFYp7xGQjX/D7IOkXymzQtc/jFHr1/WyDhBBRzZu8L1xJT477KanuNsxzKeuW+riQsv1RHCy/8kDNxInuHRK/7cPxj8BVEBppyiEvAlfVAX6UaBlfQPWGFiCm9E72NRfe1lRjCASHouM3o6zqi/7uTi20pxdZ1OtYxiZynVCEGxovc=
+  app: inrolti
+  on:
+    repo: koljanos/sga-lti
