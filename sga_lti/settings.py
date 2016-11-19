@@ -4,6 +4,7 @@ project for testing and interacting with the app.
 
 
 For more information on this file, see
+AND MAKE FUCKING BUILD
 https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
