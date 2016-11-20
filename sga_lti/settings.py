@@ -4,7 +4,6 @@ project for testing and interacting with the app.
 
 
 For more information on this file, see
-AND MAKE FUCKING BUILD
 https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
@@ -295,4 +294,4 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEVELOPMENT = get_var('DEVELOPMENT', False)
 
 MAX_FILE_SIZE_MB = get_var("MAX_FILE_SIZE_MB", 5)
-VALID_FILE_UPLOAD_EXTENSIONS = get_var("VALID_FILE_UPLOAD_EXTENSIONS", [".pdf"])
+VALID_FILE_UPLOAD_EXTENSIONS = get_var("VALID_FILE_UPLOAD_EXTENSIONS", [".via"])
