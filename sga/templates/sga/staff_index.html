@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Staff Home Page{% endblock %}
+{% block title %}Домашняя страница инструктора{% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
@@ -9,26 +9,26 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Staff Home Page</h1>
+    <h1>Домашняя страница инструктора</h1>
     
     <hr>
     
-    <h4>Frequently Used Links</h4>
+    <h4>Часто используемые ссылки</h4>
     <ul>
         <li>
             <a href="{% url 'view_student_list' course_id=request.course.id %}">
-                View Student List
+                Показать список учащихся
             </a>
         </li>
         <li>
             <a href="{% url 'view_assignment_list' course_id=request.course.id %}">
-                View Assignment List
+                Показать список заданий
             </a>
         </li>
         {% if request.role == Roles.admin %}
         <li>
             <a href="{% url 'view_grader_list' course_id=request.course.id %}">
-                View Grader List
+                Показать список интрукторов
             </a>
         </li>
         {% endif %}
