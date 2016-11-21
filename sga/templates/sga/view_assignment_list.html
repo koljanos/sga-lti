@@ -19,7 +19,7 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li><a href="{% url 'staff_index' course_id=request.course.id %}">Home</a></li>
-        <li class="active">Assignment List</li>
+        <li class="active">Список заданий</li>
     </ol>
 {% endblock %}
 
@@ -33,16 +33,16 @@
     <h4>Filters</h4>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary btn-sm active" onclick="filterReset(table)">
-            <input type="radio" checked>All Assignments
+            <input type="radio" checked>Все задания
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 1)">
-            <input type="radio">Has Not Submitted Submissions
+            <input type="radio">Имеет неотправленные задания
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 2)">
-            <input type="radio">Has Not Graded Submissions
+            <input type="radio">Имеет задания без оценки
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 3)">
-            <input type="radio">Has Graded Submissions
+            <input type="radio">Имеет задания с оценкой
         </label>
     </div>
     
@@ -51,10 +51,10 @@
     
     <table id="assignment-list" class="table table-striped table-hover">
         <thead>
-            <th>Assignment Name</th>
-            <th>Not Submitted</th>
-            <th>Not Graded</th>
-            <th>Graded</th>
+            <th>Название задания</th>
+            <th>Не принято</th>
+            <th>Не оценено</th>
+            <th>Оценено</th>
         </thead>
         <tbody>
         {% for assignment in assignments %}
