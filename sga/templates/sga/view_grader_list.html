@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}Grader List{% endblock %}
+{% block title %}Перечень инструкторов{% endblock %}
 
 {% block head %}
     <link href="{% static 'css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
@@ -25,30 +25,30 @@
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
-        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Home</a></li>
-        <li class="active">Grader List</li>
+        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Домой</a></li>
+        <li class="active">Перечень инструкторов</li>
     </ol>
 {% endblock %}
 
 {% block content %}
-    <h3>Grader List</h3>
+    <h3>Перечень инструкторов</h3>
     <hr>
-    <h4>Filters</h4>
+    <h4>Фильтры</h4>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary btn-sm active" onclick="filterReset(table)">
-            <input type="radio" checked>All Graders
+            <input type="radio" checked>Все инструкторы
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 5)">
-            <input type="radio">Accepting Students
+            <input type="radio">Принимает студентов
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 1)">
-            <input type="radio">Has Students
+            <input type="radio">Имеет студентов
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterEqualToZero(table, 1)">
-            <input type="radio">Has No Students
+            <input type="radio">Не имеет студентов
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 4)">
-            <input type="radio">Has Not Graded Submissions
+            <input type="radio">Имеет ответы без оценок
         </label>
     </div>
     
@@ -57,12 +57,12 @@
     
     <table id="grader-list" class="table table-striped table-hover">
         <thead>
-            <th>Name</th>
-            <th>Students</th>
-            <th>Max Students</th>
-            <th>Graded</th>
-            <th>Not Graded</th>
-            <th>Students Remaining</th>
+            <th>Имя</th>
+            <th>Студенты</th>
+            <th>Максимум студентов</th>
+            <th>С оценкой</th>
+            <th>Без оценки</th>
+            <th>Осталось студентов</th>
         </thead>
         <tbody>
         {% for grader in graders %}
