@@ -1,34 +1,34 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">Submission Status</div>
+    <div class="panel-heading">Статус ответа</div>
     <div class="panel-body">
         <dl class="dl-horizontal">
             <dt>Due Date:</dt>
             <dd>
                 {{ assignment.due_date|date:SGA_DATETIME_FORMAT }}<br>
                 {% if not assignment.is_past_due_date %}
-                ({{ assignment.due_date|timeuntil }} from the time this page was loaded)
+                ({{ assignment.due_date|timeuntil }} со времени, когда данная страница была загружена)
                 {% endif %}
             </dd>
-            <dt>Submitted:</dt>
-            <dd>{% if submission.submitted %}Yes{% else %}No{% endif %}</dd>
+            <dt>Задание отправлено:</dt>
+            <dd>{% if submission.submitted %}Да{% else %}Нет{% endif %}</dd>
             {% if submission.submitted %}
-            <dt>File Submission:</dt>
-            <dd><a href="{{ submission.student_document.url }}" target="_blank">View File</a></dd>
-            <dt>File Description:</dt>
+            <dt>Файл задания:</dt>
+            <dd><a href="{{ submission.student_document.url }}" target="_blank">Скачать файл</a></dd>
+            <dt>Описание файла:</dt>
             <dd>{{ submission.description }}</dd>
-            <dt>Submitted at:</dt>
+            <dt>Отправлено:</dt>
             <dd>{{ submission.submitted_at|date:SGA_DATETIME_FORMAT }}</dd>
             <br>
-            <dt>Graded:</dt>
-            <dd>{% if submission.graded %}Yes{% else %}No{% endif %}</dd>
+            <dt>Оценено:</dt>
+            <dd>{% if submission.graded %}Да{% else %}Нет{% endif %}</dd>
             {% if submission.graded %}
-            <dt>Grade:</dt>
+            <dt>Оценка:</dt>
             <dd>{{ submission.grade_display }}</dd>
-            <dt>Annotated File:</dt>
-            <dd><a href="{{ submission.grader_document.url }}" target="_blank">View File</a></dd>
-            <dt>Feedback:</dt>
+            <dt>Файл с комментариями:</dt>
+            <dd><a href="{{ submission.grader_document.url }}" target="_blank">Скачать файл</a></dd>
+            <dt>Комментарии:</dt>
             <dd>{{ submission.feedback }}</dd>
-            <dt>Graded at:</dt>
+            <dt>Дата оценки:</dt>
             <dd>{{ submission.graded_at|date:SGA_DATETIME_FORMAT }}</dd>
             {% endif %}
             {% endif %}
