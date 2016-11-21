@@ -25,24 +25,24 @@
 
 {% block content %}
     {% if grader_user %}
-    <h3>Student List (Grader: {{ grader_user.username }})</h3>
+    <h3>Перечень учеников (Инструктор: {{ grader_user.username }})</h3>
     {% else %}
-    <h3>Student List (All)</h3>
+    <h3>Перечень учеников (Все)</h3>
     {% endif %}
     <hr>
-    <h4>Filters</h4>
+    <h4>Фильтры</h4>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary btn-sm active" onclick="filterReset(table)">
-            <input type="radio" checked>All Students
+            <input type="radio" checked>Все студенты
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterHasNoGrader(table, 1)">
-            <input type="radio">Has No Grader
+            <input type="radio">Не имеют инструктора
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterHasGrader(table, 1)">
-            <input type="radio">Has Grader
+            <input type="radio">Имеют инструктора
         </label>
         <label class="btn btn-primary btn-sm" onclick="filterGreaterThanZero(table, 3)">
-            <input type="radio">Has Not Graded Submission
+            <input type="radio">Имеют задания без оценки
         </label>
     </div>
     
@@ -51,10 +51,10 @@
     
     <table id="student-list" class="table table-striped table-hover">
         <thead>
-            <th>Name</th>
-            <th>Grader</th>
+            <th>Имя</th>
+            <th>Инструктор</th>
             <th>Email</th>
-            <th>Not Graded Submissions</th>
+            <th>Ответы без оценки</th>
         </thead>
         <tbody>
         {% for student in students %}
@@ -70,7 +70,7 @@
                         {{ student.grader }}
                     </a>
                 {% else %}
-                    (No Grader)
+                    (Нет инструктора)
                 {% endif %}
                 </td>
                 <td>{{ student.user.email }}</td>
