@@ -6,19 +6,19 @@
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         {% if "view-student" in request.META.HTTP_REFERER %}
-        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Home</a></li>
-        <li><a href="{% url 'view_student_list' course_id=request.course.id %}">Student List</a></li>
+        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Домой</a></li>
+        <li><a href="{% url 'view_student_list' course_id=request.course.id %}">Перечень студентов</a></li>
         <li>
             <a href="{% url 'view_student' course_id=request.course.id student_user_id=student_user.id  %}">
-                Student
+                Студент
             </a>
         </li>
         {% else %}
-        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Home</a></li>
-        <li><a href="{% url 'view_assignment_list' course_id=request.course.id %}">Assignment List</a></li>
+        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Домой</a></li>
+        <li><a href="{% url 'view_assignment_list' course_id=request.course.id %}">Перечень заданий</a></li>
         <li>
             <a href="{% url 'view_assignment' course_id=request.course.id assignment_id=assignment.id %}">
-                Assignment
+                Задание
             </a>
         </li>
         {% endif %}
@@ -27,8 +27,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Assignment: {{ assignment.name }}</h1>
-    <h3>Student: {{ student_user.username }}</h3>
+    <h1>Задание: {{ assignment.name }}</h1>
+    <h3>Студент: {{ student_user.username }}</h3>
     <hr>
     
     {% include "common/submission_status.html" %}
@@ -37,7 +37,7 @@
     <form action="{% url 'view_submission_as_staff' course_id=request.course.id assignment_id=assignment.id student_user_id=student_user.id %}" class="form-horizontal"
           method="post" enctype="multipart/form-data">{% csrf_token %}
         {{ submission_form|as_bootstrap_horizontal:"col-sm-3" }}
-        <button class="btn btn-success pull-right" type="submit">Submit</button>
+        <button class="btn btn-success pull-right" type="submit">Отправить</button>
     </form>
     
     <div class="clearfix"></div>
@@ -45,15 +45,15 @@
     {% endif %}
     
     <div class="panel panel-info">
-        <div class="panel-heading">Actions</div>
+        <div class="panel-heading">Действия</div>
         <div class="panel-body">
             <div class="col-sm-6">
             {% if next_not_graded_submission_url %}
                 <a href="{{ next_not_graded_submission_url }}" class="btn btn-primary btn-block">
-                    Next Not Graded Submissions
+                    Следующее задание без ответа
                 </a>
             {% else %}
-                <button class="btn btn-default btn-block" disabled>No More Not Graded Submissions</button>
+                <button class="btn btn-default btn-block" disabled>Нет заданий без оценки</button>
             {% endif %}
             </div>
             {% if role == Roles.admin %}
@@ -62,10 +62,10 @@
                 <form action="{% url 'unsubmit_submission' course_id=request.course.id assignment_id=submission.assignment.id student_user_id=student_user.id %}"
                       method="post" onsubmit="return confirm('{{ UNSUBMIT_CONFIRM }}');">
                     {% csrf_token %}
-                    <button class="btn btn-primary btn-block" type="submit">Mark as Not Submitted</button>
+                    <button class="btn btn-primary btn-block" type="submit">Отметить как не отправленое</button>
                 </form>
             {% else %}
-                <button class="btn btn-primary btn-block" disabled>Submission Not Submitted</button>
+                <button class="btn btn-primary btn-block" disabled>Ответ не отправлен</button>
             {% endif %}
             </div>
             {% endif %}
