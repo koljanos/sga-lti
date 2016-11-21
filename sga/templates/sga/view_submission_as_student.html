@@ -6,11 +6,11 @@
 {% block breadcrumbs %}
 {% if request.role != Roles.student %}
     <ol class="breadcrumb">
-        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Home</a></li>
-        <li><a href="{% url 'view_student_list' course_id=request.course.id %}">Student List</a></li>
+        <li><a href="{% url 'staff_index' course_id=request.course.id %}">Домой</a></li>
+        <li><a href="{% url 'view_student_list' course_id=request.course.id %}">Перечень студентов</a></li>
         <li>
             <a href="{% url 'view_student' course_id=request.course.id student_user_id=student_user.id  %}">
-                Student
+                Студент
             </a>
         </li>
         <li class="active">Submission (Student View)</li>
@@ -19,17 +19,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Assignment: {{ assignment.name }}</h1>
+    <h1>Задание: {{ assignment.name }}</h1>
     <hr>
     {% include "common/submission_status.html" %}
     {% if not submission.submitted %}
     {% if assignment.is_past_due_date %}
-    <p class="alert alert-info text-center"><b>Sorry, this assignment's due date has passed.</b></p>
+    <p class="alert alert-info text-center"><b>Извините, срок отправки задания вышел.</b></p>
     {% else %}
     <form action="{% url 'view_submission_as_student' course_id=request.course.id assignment_id=assignment.id %}" class="form-horizontal"
           method="post" enctype="multipart/form-data">{% csrf_token %}
         {{ submission_form|as_bootstrap_horizontal:"col-sm-3" }}
-        <button class="btn btn-success pull-right" type="submit">Submit</button>
+        <button class="btn btn-success pull-right" type="submit">Отправить</button>
     </form>
     {% endif %}
     {% endif %}
