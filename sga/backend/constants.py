@@ -27,7 +27,7 @@ class Roles():
     """
     Role definitions
     """
-    student = "student"
-    grader = "grader"
-    admin = "admin"
+    student = "ученик"
+    grader = "инструктор"
+    admin = "администратор"
     none = "none"
