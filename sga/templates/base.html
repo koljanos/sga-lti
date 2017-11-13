@@ -12,7 +12,7 @@
         <div class="container">
             <div class="text-right">
                 {% if request.user.is_authenticated %}
-                <h4><b>Логин пользователя:</b> {{ request.user.username }}</h4>
+                <h4><b>Логин    пользователя:</b> {{ request.user.username }}</h4>
                 {% endif %}
                 {% if request.course %}
                 <h4><b>Курс:</b> {{ request.course.edx_id }}</h4>
